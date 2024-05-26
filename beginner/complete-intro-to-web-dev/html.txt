@@ -1,0 +1,126 @@
+<!-- this is a comment -->
+
+<h1></h1> is a tag used for headers, bolder and is used for important information
+six levels of headers are h1-h6 decreasing in size and importance
+
+there are no \n in a p tag, a new p tag should be used instead for new lines
+<p></p> is a tag used for paragraphs of information on a page
+
+
+<a href="www.google.com"> google </a> is an anchor tag, used to link to other pages/websites
+
+
+a div is a generic container for grouping things
+<div style="width: 100px; height: 100px; background-color: red;"></div> creates a red box containing which is the div
+
+
+span is a container for small pieces of text, div (a cardboard box) span (a zip lock bag)
+    it allows for the use of CSS and JavaScript later on to modify the text, line underlining etc.
+<span style="text-decoration: underline"> any text </span>
+
+
+ol, ul, li are used for lists
+    ol is an ordered list, used when order matters and are numbered
+    ul is an unordered list, used when order does not matter and are bulleted
+    list item are the text in the list
+
+<ol>
+    <li> first place </li>
+    <li> second place </li>
+</ol>
+
+<ul>
+    <li> team 1 </li>
+    <li> team 2 </li>
+</ul>
+
+
+button, is a clickable button used by javascript to respond or by a form to signal a user completed and to submit the data
+<button> click me </button>
+
+
+img, loads images onto a page, this can be done with CSS as well, however if an image is a part of the content
+    like a diagram that shows data from a p tag, it should be an img tag
+    background or decoration images should be done with CSS
+    the img tag needs a src for the image, as long as a failsafe alt tag when images cant be loaded
+<img src="src-to-image.jpg" alt="image of something">
+
+
+when inputs need to be taken from the user
+    text, default and for the user to input text
+    color, a color picker
+    file, for uploading files from a system
+    number, used for entering numbers (has arrows to increment or decrement)
+    datetime-local, used for entering a date and time
+    radio, used for selecting one option from a list
+    checkbox, used for selecting multiple options from a list
+<input type="color" />
+
+
+textarea, similar to an input but for much more text, like a paragraph
+    allows for the \n character to be used when pressing enter
+    is not self-closing :(
+<textarea></textarea>
+
+
+select/option, used for drop down menus
+    select, the container for the options (like a div)
+    option, the elements to be selected
+<select>
+    <option> Country 1 </option>
+    <option> Country 2 </option>
+</select>
+
+
+form, a group of html tags related to gathering data from a user
+    some combination of input, textarea, and select tags
+    form is just a container, and can be used to send that data to a server
+    placeholder is the grey text shown before input is given, a prompt what to input
+<form>
+    <input placeholder="name" />
+    <input type="email" placeholder="email" />
+</form>
+
+
+table, tr, td, are used for tables of data
+    like making a table in Excel
+    table, the container for the rows and columns
+    tr, a row in the table
+    td, a cell in the table
+    below is a 2x2 table
+    (0,0) (1,0)
+    (0,1) (1,1)
+<table>
+  <tbody>
+    <tr>
+      <td>(0,0)</td>
+      <td>(1,0)</td>
+    </tr>
+    <tr>
+      <td>(0,1)</td>
+      <td>(1,1)</td>
+    </tr>
+  </tbody>
+</table>
+
+
+fun way to make side scrolling text is marquee, only works on some browsers and shouldn't be used
+<marquee> scrolling text from right to left</marquee>
+
+
+
+
+Attributes, Classes, ID's
+
+attributes allow you to modify the behavior of an html attribute
+    the anchor tag used "href" to provide the link to some page or website
+    "type" was also used on the input tag to specify the type of input
+        like text, color, radio, checkbox
+
+class attribute
+    are used to create classes to modify in CSS
+    would be used on a large scope of similarly grouped elements
+id attribute
+    are used to create id's to modify in CSS
+    would be used for single elements or a small scope of elements
+    are supposed to be unique and used once so not advisable to use
