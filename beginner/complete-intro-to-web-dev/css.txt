@@ -1,0 +1,359 @@
+css allows the declarations of style in a website
+colors, sizes, order, positioning, hiding, showing, animation, etc.
+these rules can use tags or id/classes
+
+like making all h1's red
+h1 {
+    color: red;
+}
+    h1 is the selector
+    color: is the property (around 350 to choose) (https://meiert.com/en/indices/css-properties/)
+    red; is the value, a color, number etc.
+
+this is how to make a h1 limegreen, bigger, not bold, underlined, uppercased, and have a pink border
+h1 {
+    color: limegreen;
+    font-size: 60px;
+    font-weight: normal;
+    text-decoration: underline;
+    text-transform: uppercase;
+    border: 3px solid pink;
+}
+
+
+Parents and Children in CSS
+    if given html
+    <div>
+        <h1>some title</h1>
+    </div>
+
+    and css with
+    div {
+        color: blue;
+    }
+    the h1 will be colored blue, this is because it has a parent div tag.
+
+
+accessing classes
+    .name
+    where name is the class name given to a tag in html
+    <h1 class="title"> Title of page </h1>
+
+    in css would be accessed
+    .title {
+        color: green;
+        font-weight: bold;
+    }
+
+
+the cascade
+    if two rules apply to the same h1 tag for example
+    the last rule overwrites any value for properties
+    if there is nothing to overwrite the property will stay the same
+
+    a rule can also be used with 2 classes
+    .name1.name2{
+        color: red;
+    }
+    .name2{
+        color: blue;
+    }
+    these more specific class rules overwrite their respective less individual class
+
+    classes are also more specific than individual tags and will overwrite them
+
+
+IDs and !important
+    IDs are like a sledgehammer and overwrite many of the class rules in CSS
+
+    !important is like a wrecking ball, it overwrites anything else
+    <style>
+      #site-brand-2 {
+        color: red;
+        border: 1px solid red;
+      }
+
+      .nav-head-2 {
+        color: green !important;
+        border: 1px solid green;
+      }
+    </style>
+    <h1 id="site-brand-2" class="nav-head-2 nav-main-2 other-useful-class-2">
+      The Brand of my Website
+    </h1>
+
+    here the h1 is green, but the border is 1px and red since the id has higher importance
+
+
+pseudo-classes
+    changing how elements look based on events, like a mouse hover
+    .hover-example {
+        width: 100px;
+        height: 100px;
+        background-color: limegreen;
+        color: white;
+      }
+      .hover-example:hover {
+        background-color: crimson;
+        width: 150px;
+        height: 150px;
+      }
+      this css makes a green box and when hovered turns crimson
+      :hover selects that element only when the condition is true
+
+      <style>
+        .first-child-example {
+          color: crimson;
+        }
+        .first-child-example:first-child {
+          color: limegreen;
+        }
+      </style>
+      <ol>
+        <li class="first-child-example">First</li>
+        <li class="first-child-example">Second</li>
+        <li class="first-child-example">Third</li>
+      </ol>
+      makes an list first being green and following crimson
+
+
+pseudo-elements https://css-tricks.com/almanac/selectors/a/after-and-before/
+    :: means a pseudo-element
+    there are before, after, which add something to the element before or after
+
+
+CSS box model
+    divs by themselves will take an entire line to make them float next to each other
+    float: left; is what actually allows this
+    float:right; will make them shift right
+    box 1 would be furthest right, 2 second furthest to the right
+    display: flex; makes the text centered in the boxes
+    margin: 10px; creates a 10px gap between the divs (boxes)
+
+    <style>
+      .ex-box {
+        border: 3px solid #aaa;
+        background-color: #eee;
+        height: 200px;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-size: 30px;
+      }
+      .ex-box:last-of-type {
+        clear: right;
+      }
+    </style>
+    <div class="ex-box">Box 1</div>
+    <div class="ex-box">Box 2</div>
+    makes two boxes float next to each other
+
+    The box model
+        every tag is CSS has a display property by default
+        divs are display: block;
+        spans are display: inline;
+
+        if trying to set the width/height and its not being respected probably using the wrong display type
+
+        display can be
+            inline, makes whatever the tag behave like text. browser will determine the height, width, padding etc. and will not let you change it
+            block, divs and ps. gives control over the height, width, padding, margins, etc. of something, default takes the whole line to itself
+            inline-block, a hybrid which makes the browser try to place the tag inline but will allow the control of height etc.
+            flex and inline-flex, similar to block in it affects the surrounding tags similarly but gains control over interior tags
+            grid and inline-grid, more advance display mode that allows more power to layout tags inside of them
+            table, make something act like a table should use tag <table></table> instead of css
+
+        display: flex;
+            flex allows you to lay out items inside a tag, tell them to be left aligned, bottom, center, etc.
+            even into columns
+
+        flex-direction: row-reverse;
+            reverses the order which items in the container are displayed
+        flex-direction: column;
+            makes the items display as a column
+
+        justify-content: flex-end;
+            justifies content to the right of the box
+        justify-content: center;
+            makes the content centered to the div
+        justify-content: space-between;
+            adds a space between items, left and right edges touch but middle elements have a space between
+        justify-content: space-around;
+            like space-between but with space between left edge and element etc.
+            distance of edge and 1st element is half of the normal space between middle elements
+        justify-content: space-evenly;
+            list space-around but edge gaps are equal to middle element gaps
+
+        align-items: flex-start;
+            aligns items to the top
+        align-items: flex-end;
+            aligns items vertically down instead of to the right edge
+        align-items: center;
+            aligns items vertically center
+        align-items: stretch;
+            height: inherit;
+            makes interior tags fit to whatever container they're in
+            height also needs to be set to inherit for this to work
+
+        flex-grow: 1;
+            allows for the increase wrt. width proportion
+            container with 10 would be 10 times larger than a container with 1
+
+
+CSS Grid
+    shares similarities with flex but its more oriented to making grids layouts as opposed to flex
+    which is more flexible in terms of what you can get it to do
+    useful in more laying out a page, flex is useful when you have more unique layouts to achieve.
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; % px or fr
+        row-gap: 10px;
+        column-gap: 10px;
+      }
+
+      .grid-picture {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+    <div class="grid">
+        <img class="grid-picture" src="image1.jpg" />
+        <img class="grid-picture" src="image2.jpg" />
+        <img class="grid-picture" src="image3.jpg" />
+        <img class="grid-picture" src="image4.jpg" />
+    </div>
+    here the display is set to grid, and the 2 columns are set with 1fr 1fr
+        1fr 2fr would make the second column items larger
+    the horizontal row gutters are set to 10px
+    the vertical column gutters are set to 10px as well
+        img1  img2
+        img3  img4
+
+    <style>
+      .my-page-header {
+        grid-area: nav-header;
+        background-color: red;
+        padding: 10px;
+      }
+
+      .my-page-body {
+        grid-area: main-body;
+        background-color: blue;
+        padding: 10px;
+        height: 200px;
+      }
+
+      .my-page-sidebar {
+        grid-area: nav-side;
+        background-color: green;
+        padding: 10px;
+      }
+
+      .my-page-footer {
+        grid-area: footer;
+        background-color: yellow;
+        padding: 10px;
+      }
+
+      .my-page {
+        display: grid;
+        grid-template-areas:
+          "nav-header  nav-header  nav-header  nav-side"
+          "main-body   main-body   .           nav-side"
+          "footer      footer      footer      footer";
+      }
+    </style>
+    <div class="my-page">
+      <header class="my-page-header">the header</header>
+      <div class="my-page-body">the body</div>
+      <div class="my-page-sidebar">the sidebar</div>
+      <footer class="my-page-footer">the footer</footer>
+    </div>
+
+        in this example a website page layout is created with the class my-page
+        display is set to grid
+        and the template is set using the names set with grid-area:
+            grid area sets the name which could be referenced in the template
+        in the template references are laid out in the form desired
+        .
+        signifies an empty cell
+
+
+CSS Animations
+    animation-timing-function:
+        linear, ease, ease-in-out, ease-in, ease-out, cubic-bezier(0,1,.5,1)
+        can be used to make classes which specify the type of timing function to apply for an animation
+
+    <style>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .spinny-boi {
+        animation: spin 0.5s infinite linear; linear/ease, ease more of a pulse
+        display: inline-block;
+        font-size: 30px;
+      }
+    </style>
+    <div class="spinny-boi">🤢</div>
+
+        @keyframes, allows the definition of a reusable animation "spin"
+        the class spinny-boi
+            animation: keyframe time duration
+            keyframe, the spin declared
+            time, seconds per revolution
+            duration, amount the keyframe repeats
+
+        from{}
+        to {}
+            signifies the change from normal state to something
+            transform: rotate(360deg);
+            goes from normal to a rotated by 360 deg state
+
+        % can be used instead of 'from' or 'to'
+        this can be used to make a great rotational speed from 0 to 25% at 300deg
+        and from 25 to 100% a very slow rotation to 360deg
+                <style>
+                  @keyframes spin {
+                  	0%{
+
+                    }
+                    25%{
+                    	transform: rotate(300deg)
+                    }
+                    100% {
+                      transform: rotate(360deg);
+                    }
+                  }
+                  .spinny-boi {
+                    animation: spin 1s infinite linear;
+                    display: inline-block;
+                    font-size: 30px;
+                  }
+                </style>
+                <div class="spinny-boi">🤢</div>
+
+        animations can also apply to color the same way as transform
+        @keyframes rainbow {
+            100%,
+            0% {
+            	color: red;
+            }
+            30% {
+            	color: green;
+            }
+            60% {
+            	color: blue;
+            }
+          }
+            goes through the colors rgb
+
+
+Newspaper Layout
