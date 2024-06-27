@@ -126,7 +126,7 @@ CSS box model
     divs by themselves will take an entire line to make them float next to each other
     float: left; is what actually allows this
     float:right; will make them shift right
-    box 1 would be furthest right, 2 second furthest to the right
+        box 1 would be furthest right, 2 second furthest to the right
     display: flex; makes the text centered in the boxes
     margin: 10px; creates a 10px gap between the divs (boxes)
 
